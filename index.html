@@ -231,6 +231,37 @@
   #soltar .ico{width:40px;height:40px;color:#1a7ea3;}
   @media (max-width:520px){ .esc-intervalo{margin-left:0;} }
 
+
+  /* ===== Zoom (painel flutuante no canto do palco) ===== */
+  #zoomCtl{position:absolute;right:14px;bottom:14px;z-index:4;display:flex;flex-direction:column;align-items:center;gap:2px;
+    padding:5px;border-radius:14px;background:rgba(15,44,74,.92);box-shadow:0 6px 18px rgba(8,20,34,.30);backdrop-filter:blur(4px);}
+  #zoomCtl .zbtn{width:46px;height:44px;border:none;border-radius:10px;background:transparent;color:#e6eef6;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;padding:0;transition:background .15s;}
+  #zoomCtl .zbtn:hover{background:rgba(255,255,255,.12);}
+  #zoomCtl .zbtn:disabled{opacity:.3;cursor:default;background:transparent;}
+  #zoomCtl .zbtn:focus-visible{outline:2px solid var(--cyan);outline-offset:1px;}
+  #zoomCtl .ztxt{height:30px;font-size:12px;font-weight:800;letter-spacing:.2px;}
+  #zoomCtl.com-zoom .ztxt{background:var(--cyan);color:#0b2239;}
+  #zoomCtl.com-zoom .ztxt:hover{background:#5cc3e4;}
+  #zoomCtl .zsep{width:28px;height:1px;background:rgba(255,255,255,.15);margin:3px 0;}
+  #zoomCtl .ferr-mover.ativa{background:var(--verde);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(182,215,82,.6);}
+  #zoomCtl .ico{width:21px;height:21px;}
+  @media (max-height:600px){ #zoomCtl{flex-direction:row;} #zoomCtl .zsep{width:1px;height:26px;margin:0 3px;} #zoomCtl .ztxt{height:44px;width:54px;} }
+
+
+  /* navegação no PDF contínuo (aparece só quando a página tem várias páginas de PDF) */
+  #zoomCtl .zdoc{display:none;flex-direction:column;align-items:center;gap:2px;}
+  #zoomCtl.doc .zdoc{display:flex;}
+  #pdfPos{font-size:11px;font-weight:800;color:#b6d752;letter-spacing:.2px;padding:2px 0;}
+  /* escolha do modo de importação */
+  .esc-modos{flex-basis:100%;display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+  .esc-modo{display:grid;grid-template-columns:22px 1fr;gap:2px 8px;align-items:start;cursor:pointer;
+    border:1.5px solid #d6e0ea;border-radius:12px;padding:10px 12px;font-weight:600;}
+  .esc-modo input{grid-row:span 2;margin-top:3px;width:18px;height:18px;accent-color:var(--verde);}
+  .esc-modo b{font-size:14px;color:#0f2c4a;}
+  .esc-modo span{font-size:12.5px;font-weight:500;color:#5b7187;line-height:1.35;}
+  .esc-modo:has(input:checked){border-color:var(--verde);background:#f1f8f2;}
+
   /* ===== Adaptação de tela =====
      Telas baixas (notebook): esconde rótulos e títulos das laterais.
      Telas estreitas: compacta a barra; se não couber, ela rola na horizontal. */
@@ -303,6 +334,11 @@
     <symbol id="i-pagmais" viewBox="0 0 24 24"><path d="M14.5 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7.5z"/><path d="M14.5 2.5v5h5"/><path class="hl" d="M12 11v7M8.5 14.5h7"/></symbol>
     <symbol id="i-pagmenos" viewBox="0 0 24 24"><path d="M14.5 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7.5z"/><path d="M14.5 2.5v5h5"/><path d="M8.5 14.5h7" style="stroke:#ff8a8e"/></symbol>
     <symbol id="i-importar" viewBox="0 0 24 24"><path d="M14.5 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7.5z"/><path d="M14.5 2.5v5h5"/><path class="hl" d="M12 18v-7M8.8 14.2L12 11l3.2 3.2"/></symbol>
+    <symbol id="i-zmais" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="M20.5 20.5l-5-5M10.5 7.5v6M7.5 10.5h6"/></symbol>
+    <symbol id="i-zmenos" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="M20.5 20.5l-5-5M7.5 10.5h6"/></symbol>
+    <symbol id="i-mover" viewBox="0 0 24 24"><path d="M18 11V6.5a1.5 1.5 0 0 0-3 0V11"/><path d="M15 10V4.5a1.5 1.5 0 0 0-3 0V10"/><path d="M12 10.5V5.5a1.5 1.5 0 0 0-3 0V14"/><path d="M18 8.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1.5a7 7 0 0 1-5.3-2.4L4 15.9a1.6 1.6 0 0 1 2.4-2.1L9 16"/></symbol>
+    <symbol id="i-cima" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+    <symbol id="i-baixo" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
     <symbol id="i-grade" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
     <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M10.3 3.9L2.4 17.5a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.2v.1"/></symbol>
   </defs>
@@ -339,6 +375,19 @@
   <!-- PALCO -->
   <div id="palco">
     <canvas id="tela"></canvas>
+    <div id="zoomCtl" role="toolbar" aria-label="Zoom">
+      <button class="zbtn" data-action="zoom-mais" title="Aproximar (Ctrl + roda do mouse ou pinça com 2 dedos)"><svg class="ico"><use href="#i-zmais"/></svg></button>
+      <button class="zbtn ztxt" data-action="zoom-ajustar" title="Voltar à página inteira (Ctrl+0)"><span id="zoomTxt">100%</span></button>
+      <button class="zbtn" data-action="zoom-menos" title="Afastar"><svg class="ico"><use href="#i-zmenos"/></svg></button>
+      <span class="zsep"></span>
+      <div class="zdoc">
+        <button class="zbtn" data-action="pdf-ant" title="Página anterior do PDF (Page Up)"><svg class="ico"><use href="#i-cima"/></svg></button>
+        <span id="pdfPos" title="Página do PDF"></span>
+        <button class="zbtn" data-action="pdf-prox" title="Próxima página do PDF (Page Down)"><svg class="ico"><use href="#i-baixo"/></svg></button>
+        <span class="zsep"></span>
+      </div>
+      <button class="zbtn ferr-mover" data-tool="mover" aria-label="Mover: arraste para navegar com zoom" title="Mover (H)"><svg class="ico"><use href="#i-mover"/></svg></button>
+    </div>
     <div id="soltar"><div><svg class="ico"><use href="#i-importar"/></svg><b>Solte o PDF ou a imagem aqui</b></div></div>
   </div>
 
@@ -916,7 +965,11 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
   /* conteúdo da página em JSON, SEM o fundo: o fundo (linhas, quadro, página de PDF)
      é redesenhado por desenharFundo(). Mantém histórico e salvamento leves. */
   function jsonPagina(extras){
-    var o = canvas.toDatalessJSON(extras || ["selectable","evented"]);
+    var bg = canvas.backgroundColor, bgi = canvas.backgroundImage;
+    canvas.backgroundColor = null; canvas.backgroundImage = null;
+    var o;
+    try{ o = canvas.toDatalessJSON(extras || ["selectable","evented"]); }
+    finally{ canvas.backgroundColor = bg; canvas.backgroundImage = bgi; }
     delete o.background; delete o.backgroundImage;
     return JSON.stringify(o);
   }
@@ -961,12 +1014,13 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     return {
       json: jsonPagina(),
       fundo: selFundo.value,
-      pdf: (paginas[pagAtual] && paginas[pagAtual].pdf) || null
+      pdfs: (function(){ var l = pdfsDaPagina(paginas[pagAtual]); return l.length ? l : null; })()
     };
   }
 
   function attPagInfo(){
     pagInfo.textContent = "Pág " + (pagAtual+1) + "/" + paginas.length;
+    if(typeof zoomAjustar === "function" && zoomTxt) zoomAjustar(true);
     if(typeof agendarSalvar === "function") agendarSalvar();
   }
 
@@ -1021,57 +1075,98 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
      agem sobre o objeto selecionado, ou avisam se não houver seleção */
 
   /* ================= FUNDOS ================= */
-  /* imagens das páginas de PDF, em cache pelo dataURL */
+  /* ===== DOCUMENTO: páginas da lousa que contêm PDF =====
+     O PDF ocupa um "mundo" de largura fixa (DOC_W), independente da tela.
+     Assim as anotações ficam presas ao PDF em qualquer lousa, notebook ou tablet.
+     Com várias páginas de PDF na mesma página da lousa, elas ficam empilhadas
+     (documento contínuo) e o professor rola para navegar.                        */
+  var DOC_W = 1200, DOC_M = 30, DOC_GAP = 28;
   var cacheImgPdf = {};
-  function imgDaPagina(p, aoCarregar){
-    if(!p || !p.pdf) return null;
-    var img = cacheImgPdf[p.pdf];
+  function pdfsDaPagina(p){
+    if(!p) return [];
+    if(p.pdfs && p.pdfs.length) return p.pdfs;
+    if(p.pdf) return [{ src:p.pdf, w:0, h:0 }];          // formato da v4/v5
+    return [];
+  }
+  function imgSrc(src, aoCarregar){
+    var img = cacheImgPdf[src];
     if(!img){
-      img = new Image();
-      img.onload = function(){ if(aoCarregar) aoCarregar(img); };
-      img.src = p.pdf;
-      cacheImgPdf[p.pdf] = img;
+      img = new Image(); cacheImgPdf[src] = img;
+      img.addEventListener("load", function(){ if(aoCarregar) aoCarregar(img); }, {once:true});
+      img.src = src;
       return null;
     }
-    if(!img.complete){ if(aoCarregar) img.addEventListener("load", function(){ aoCarregar(img); }, {once:true}); return null; }
+    if(!img.complete || !img.naturalWidth){
+      if(aoCarregar) img.addEventListener("load", function(){ aoCarregar(img); }, {once:true});
+      return null;
+    }
     return img;
   }
-  function imgPronta(p){
-    return new Promise(function(ok){
-      if(!p || !p.pdf) return ok(null);
-      var i = imgDaPagina(p, ok);
-      if(i) ok(i);
+  function imgsProntas(p){
+    return Promise.all(pdfsDaPagina(p).map(function(it){
+      return new Promise(function(ok){ var i = imgSrc(it.src, ok); if(i) ok(i); });
+    }));
+  }
+  function layoutDoc(p){
+    var lista = pdfsDaPagina(p);
+    if(!lista.length) return null;
+    var larg = DOC_W - 2*DOC_M, y = DOC_M, blocos = [], maiorH = 0;
+    lista.forEach(function(it){
+      var iw = it.w, ih = it.h;
+      if(!iw || !ih){
+        var im = cacheImgPdf[it.src];
+        if(im && im.naturalWidth){ iw = im.naturalWidth; ih = im.naturalHeight; } else { iw = 1000; ih = 1414; }
+      }
+      var h = larg * ih / iw;
+      blocos.push({ src:it.src, x:DOC_M, y:y, w:larg, h:h });
+      maiorH = Math.max(maiorH, h);
+      y += h + DOC_GAP;
+    });
+    return { w:DOC_W, h:y - DOC_GAP + DOC_M, blocos:blocos, maiorH:maiorH, continuo: blocos.length > 1 };
+  }
+  function mundoDe(p, cw, ch){
+    var L = layoutDoc(p);
+    return L ? { w:L.w, h:L.h, L:L } : { w:cw, h:ch, L:null };
+  }
+  function mundoAtual(){ return mundoDe(paginas[pagAtual], canvas.getWidth(), canvas.getHeight()); }
+  /* escala em que "100%" mostra uma página inteira do PDF na tela */
+  function escalaBase(){
+    var m = mundoAtual();
+    if(!m.L) return 1;
+    return Math.min(canvas.getWidth() / m.w, canvas.getHeight() / (m.L.maiorH + 2*DOC_M));
+  }
+  function desenharBlocosPdf(x, L, escuroBg, aoCarregar){
+    L.blocos.forEach(function(b){
+      x.save();
+      x.shadowColor = escuroBg ? "rgba(0,0,0,.45)" : "rgba(15,44,74,.22)";
+      x.shadowBlur = 16; x.shadowOffsetY = 3;
+      x.fillStyle = "#ffffff"; x.fillRect(b.x, b.y, b.w, b.h);
+      x.restore();
+      var img = imgSrc(b.src, aoCarregar);
+      if(img) x.drawImage(img, b.x, b.y, b.w, b.h);
     });
   }
-  function desenharPaginaPdf(x, w, h, img, escuroBg){
-    var m = 14;
-    var esc = Math.min((w-2*m)/img.width, (h-2*m)/img.height);
-    var iw = img.width*esc, ih = img.height*esc;
-    var ix = (w-iw)/2, iy = (h-ih)/2;
-    x.save();
-    x.shadowColor = escuroBg ? "rgba(0,0,0,.45)" : "rgba(15,44,74,.22)";
-    x.shadowBlur = 18; x.shadowOffsetY = 4;
-    x.fillStyle = "#ffffff"; x.fillRect(ix, iy, iw, ih);
-    x.restore();
-    x.drawImage(img, ix, iy, iw, ih);
-  }
   function desenharFundo(){
-    var p = paginas[pagAtual];
-    var img = imgDaPagina(p, function(){ var q = paginas[pagAtual]; if(q && p && q.pdf === p.pdf) desenharFundo(); });
-    var c = gerarFundo(selFundo.value, canvas.getWidth(), canvas.getHeight(), img);
-    canvas.setBackgroundColor({source:c.toDataURL(), repeat:"no-repeat"}, canvas.renderAll.bind(canvas));
+    var c = gerarFundo(selFundo.value, canvas.getWidth(), canvas.getHeight(), mundoAtual(), canvas.viewportTransform,
+                       function(){ fundoNoProximoQuadro(); });
+    canvas.backgroundVpt = false;
+    canvas.setBackgroundColor({source:c, repeat:"no-repeat"}, function(){ canvas.requestRenderAll(); });
+    if(typeof attPosPdf === "function") attPosPdf();
   }
-  function gerarFundo(tipo, w, h, imgPdf){
+  /* desenha o fundo numa tela de w x h; linhas e PDF seguem o "mundo" e o zoom (vpt) */
+  function gerarFundo(tipo, w, h, mundo, vpt, aoCarregar, exportando){
     var c = document.createElement("canvas");
     c.width = w; c.height = h;
     var x = c.getContext("2d");
 
     // cor de base de cada fundo
-    var corFundo = "#ffffff";
+    var corFundo = (mundo && mundo.L && !exportando) ? "#dfe5ec" : "#ffffff";   // mesa cinza em volta do PDF
     if(tipo==="escuro") corFundo = "#13202b";
     else if(tipo==="verde") corFundo = "#0f5132";   // verde quadro-negro
     x.fillStyle = corFundo;
     x.fillRect(0,0,w,h);
+    if(vpt && (vpt[0] !== 1 || vpt[4] || vpt[5])) x.setTransform(vpt[0], vpt[1], vpt[2], vpt[3], vpt[4], vpt[5]);
+    if(mundo){ w = mundo.w; h = mundo.h; }          // daqui para baixo: coordenadas do "mundo"
 
     // cor das linhas conforme o fundo (claras sobre quadro, escuras sobre branco)
     var escuroBg = (tipo==="escuro" || tipo==="verde");
@@ -1132,7 +1227,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       }
     }
 
-    if(imgPdf) desenharPaginaPdf(x, w, h, imgPdf, escuroBg);
+    if(mundo && mundo.L) desenharBlocosPdf(x, mundo.L, escuroBg, aoCarregar);
     return c;
   }
   selFundo.addEventListener("change", function(){ desenharFundo(); msg("Fundo: "+selFundo.options[selFundo.selectedIndex].text); });
@@ -1162,7 +1257,8 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     }
     canvas.selection = (t==="select");
     canvas.forEachObject(function(o){ o.selectable = (t==="select"); o.evented = (t==="select"); });
-    canvas.defaultCursor = (t==="select") ? "default" : "crosshair";
+    canvas.defaultCursor = (t==="select") ? "default" : (t==="mover" ? "grab" : "crosshair");
+    canvas.hoverCursor = (t==="mover") ? "grab" : "move";
     if(t!=="select") canvas.discardActiveObject().renderAll();
   }
 
@@ -1440,11 +1536,12 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
           src = cc.toDataURL("image/jpeg", 0.85);
         }
         fabric.Image.fromURL(src, function(img){
-          var max = Math.min(canvas.getWidth(), canvas.getHeight()) * 0.6;
+          var max = Math.min(canvas.getWidth(), canvas.getHeight()) / canvas.getZoom() * 0.6;
           if(img.width > max || img.height > max){
             img.scale(max / Math.max(img.width, img.height));
           }
-          img.set({left:canvas.getWidth()/2, top:canvas.getHeight()/2, originX:"center", originY:"center"});
+          var centro = canvas.getVpCenter();
+          img.set({left:centro.x, top:centro.y, originX:"center", originY:"center"});
           canvas.add(img).setActiveObject(img);
           canvas.renderAll();
           msg("Imagem inserida");
@@ -1495,98 +1592,76 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     document.body.removeChild(a);
   }
 
-  function exportarPNG(){
-    canvas.discardActiveObject().renderAll();
-
-    // salva o estado da página atual antes de percorrer
-    paginas[pagAtual] = estadoPaginaAtual();
-    var totalPag = paginas.length;
-    var carimbo = carimboData();
-
-    // uma só página: exporta direto (comportamento simples)
-    if(totalPag === 1){
-      baixarPNG(canvas.toDataURL({format:"png", multiplier:2}), "lousa_" + carimbo + ".png");
-      msg("PNG exportado");
-      return;
-    }
-
-    msg("Exportando " + totalPag + " páginas...");
-
-    // canvas Fabric temporário (fora da tela) para renderizar cada página
-    var elTmp = document.createElement("canvas");
-    elTmp.width = canvas.getWidth();
-    elTmp.height = canvas.getHeight();
-    var cTmp = new fabric.StaticCanvas(elTmp, {
-      width: canvas.getWidth(),
-      height: canvas.getHeight()
+  /* folhas a exportar de uma página da lousa */
+  function folhasDaPagina(p, cw, ch){
+    var L = layoutDoc(p);
+    if(!L) return [{ x:0, y:0, w:cw, h:ch, mult:1 }];
+    return L.blocos.map(function(b){
+      var m = DOC_M/2;
+      return { x:0, y:Math.max(0, b.y - m), w:DOC_W, h:b.h + 2*m, mult:1.5 };
     });
-
-    var i = 0;
-    function proxima(){
-      if(i >= totalPag){
-        cTmp.dispose();
-        msg("Exportadas " + totalPag + " páginas");
-        return;
-      }
-      var p = paginas[i];
-      imgPronta(p).then(function(imgP){
-      cTmp.loadFromJSON(p.json, function(){
-        cTmp.backgroundColor = new fabric.Pattern({ source: gerarFundo(p.fundo || "branco", cTmp.getWidth(), cTmp.getHeight(), imgP), repeat:"no-repeat" });
-        cTmp.renderAll();
-        var nome = "lousa_" + carimbo + "_pag" + (i+1) + ".png";
-        baixarPNG(cTmp.toDataURL({format:"png", multiplier:2}), nome);
-        i++;
-        // pequeno intervalo evita que o navegador bloqueie downloads em sequência
-        setTimeout(proxima, 400);
-      });
+  }
+  /* percorre todas as folhas de todas as páginas, renderizando cada uma fora da tela */
+  function percorrerFolhas(escalaDe, aoFolha, aoFim){
+    canvas.discardActiveObject().renderAll();
+    paginas[pagAtual] = estadoPaginaAtual();
+    var cw = canvas.getWidth(), ch = canvas.getHeight();
+    var el = document.createElement("canvas");
+    var cTmp = new fabric.StaticCanvas(el, { width:cw, height:ch });
+    cTmp.backgroundVpt = false;
+    var pi = 0, total = 0;
+    function proxPagina(){
+      if(pi >= paginas.length){ cTmp.dispose(); aoFim(total); return; }
+      var p = paginas[pi], folhas = folhasDaPagina(p, cw, ch), mundo = mundoDe(p, cw, ch);
+      imgsProntas(p).then(function(){
+        cTmp.loadFromJSON(p.json, function(){
+          var fi = 0;
+          function proxFolha(){
+            if(fi >= folhas.length){ pi++; proxPagina(); return; }
+            // renderiza já na resolução final (sem "multiplier"), para fundo e desenhos casarem
+            var f = folhas[fi], k = escalaDe(f);
+            var W = Math.round(f.w*k), H = Math.round(f.h*k), vpt = [k,0,0,k,-f.x*k,-f.y*k];
+            cTmp.setDimensions({ width:W, height:H });
+            cTmp.setViewportTransform(vpt);
+            cTmp.backgroundColor = new fabric.Pattern({ source: gerarFundo(p.fundo || "branco", W, H, mundo, vpt, null, true), repeat:"no-repeat" });
+            cTmp.renderAll();
+            total++;
+            aoFolha(cTmp, f, pi, fi, function(){ fi++; proxFolha(); });
+          }
+          proxFolha();
+        });
       });
     }
-    proxima();
+    proxPagina();
+  }
+
+  function exportarPNG(){
+    var carimbo = carimboData();
+    msg("Exportando imagens...");
+    percorrerFolhas(function(f){ return f.mult === 1 ? 2 : f.mult; }, function(cTmp, f, pi, fi, seguir){
+      var nome = "lousa_" + carimbo + "_pag" + (pi+1) + (fi ? "_" + (fi+1) : "") + ".png";
+      baixarPNG(cTmp.toDataURL({ format:"png" }), nome);
+      setTimeout(seguir, 400);   // intervalo evita bloqueio de downloads em sequência
+    }, function(total){ msg(total === 1 ? "PNG exportado" : "Exportadas " + total + " imagens"); });
   }
 
   function exportarPDF(aoTerminar){
-    // jsPDF é exposto como window.jspdf.jsPDF
     var JsPDF = (window.jspdf && window.jspdf.jsPDF) ? window.jspdf.jsPDF : null;
     if(!JsPDF){ msg("Gerador de PDF não carregou"); return; }
-
-    canvas.discardActiveObject().renderAll();
-    paginas[pagAtual] = estadoPaginaAtual();
-    var totalPag = paginas.length;
-    var carimbo = carimboData();
-
-    var w = canvas.getWidth(), h = canvas.getHeight();
-    var orient = (w >= h) ? "landscape" : "portrait";
-    var pdf = new JsPDF({ orientation: orient, unit: "px", format: [w, h] });
-
+    var carimbo = carimboData(), pdf = null;
     msg("Gerando PDF...");
-
-    var elTmp = document.createElement("canvas");
-    elTmp.width = w; elTmp.height = h;
-    var cTmp = new fabric.StaticCanvas(elTmp, { width: w, height: h });
-
-    var i = 0;
-    function proxima(){
-      if(i >= totalPag){
-        cTmp.dispose();
-        pdf.save("lousa_" + carimbo + ".pdf");
-        msg("PDF salvo: " + totalPag + " página(s)");
-        if(typeof aoTerminar === "function") setTimeout(aoTerminar, 600);
-        return;
-      }
-      var p = paginas[i];
-      imgPronta(p).then(function(imgP){
-      cTmp.loadFromJSON(p.json, function(){
-        cTmp.backgroundColor = new fabric.Pattern({ source: gerarFundo(p.fundo || "branco", cTmp.getWidth(), cTmp.getHeight(), imgP), repeat:"no-repeat" });
-        cTmp.renderAll();
-        var img = cTmp.toDataURL({ format: "jpeg", quality: 0.92 });
-        if(i > 0) pdf.addPage([w, h], orient);
-        pdf.addImage(img, "JPEG", 0, 0, w, h);
-        i++;
-        proxima();
-      });
-      });
-    }
-    proxima();
+    percorrerFolhas(function(f){ return f.mult; }, function(cTmp, f, pi, fi, seguir){
+      var orient = (f.w >= f.h) ? "landscape" : "portrait";
+      var img = cTmp.toDataURL({ format:"jpeg", quality:0.92 });
+      if(!pdf) pdf = new JsPDF({ orientation:orient, unit:"px", format:[f.w, f.h] });
+      else pdf.addPage([f.w, f.h], orient);
+      pdf.addImage(img, "JPEG", 0, 0, f.w, f.h);
+      seguir();
+    }, function(total){
+      pdf.save("lousa_" + carimbo + ".pdf");
+      msg("PDF salvo: " + total + " página(s)");
+      if(typeof aoTerminar === "function") setTimeout(aoTerminar, 600);
+    });
   }
   function handlerBarra(e){
     var bT = e.target.closest("[data-tool]");
@@ -1612,6 +1687,11 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       var a = bA.dataset.action;
       if(a==="imagem")   fileImg.click();
       if(a==="importar") fileDoc.click();
+      if(a==="zoom-mais")   aplicarZoom(zoomUsuario * ZOOM_PASSO);
+      if(a==="zoom-menos")  aplicarZoom(zoomUsuario / ZOOM_PASSO);
+      if(a==="pdf-ant")     irParaBloco(blocoAtual() - 1);
+      if(a==="pdf-prox")    irParaBloco(blocoAtual() + 1);
+      if(a==="zoom-ajustar") zoomAjustar();
       if(a==="autoforma"){
         estado.autoforma = !estado.autoforma;
         document.getElementById("btnAuto").classList.toggle("ativa", estado.autoforma);
@@ -1640,6 +1720,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
   document.getElementById("barra").addEventListener("click", handlerBarra);
   document.getElementById("lateral").addEventListener("click", handlerBarra);
   document.getElementById("lateral-dir").addEventListener("click", handlerBarra);
+  document.getElementById("zoomCtl").addEventListener("click", handlerBarra);
 
   rangeEsp.addEventListener("input", function(){
     estado.espessura = parseInt(this.value,10);
@@ -1656,10 +1737,14 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     if(e.ctrlKey || e.metaKey){
       if(e.key==="z"){ e.preventDefault(); desfazer(); return; }
       if(e.key==="y"){ e.preventDefault(); refazer(); return; }
+      if(e.key==="0"){ e.preventDefault(); zoomAjustar(); return; }
+      if(e.key==="=" || e.key==="+"){ e.preventDefault(); aplicarZoom(zoomUsuario*ZOOM_PASSO); return; }
+      if(e.key==="-"){ e.preventDefault(); aplicarZoom(zoomUsuario/ZOOM_PASSO); return; }
     }
     if(e.key==="Delete" || e.key==="Backspace"){ excluirSel(); return; }
 
-    var mapa = {v:"select",p:"caneta",m:"marcatexto",l:"linha",a:"seta",r:"retangulo",c:"circulo",t:"texto"};
+    if((e.key==="PageDown" || e.key==="PageUp") && mundoAtual().L){ e.preventDefault(); irParaBloco(blocoAtual() + (e.key==="PageDown" ? 1 : -1)); return; }
+    var mapa = {v:"select",p:"caneta",m:"marcatexto",l:"linha",a:"seta",r:"retangulo",c:"circulo",t:"texto",h:"mover"};
     var f = mapa[e.key.toLowerCase()];
     if(f){ var b=document.querySelector('[data-tool="'+f+'"]'); if(b) b.click(); }
   });
@@ -1714,7 +1799,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
   function aulaTemConteudo(lista){
     lista = lista || paginas;
     if(lista.length > 1) return true;
-    for(var i=0;i<lista.length;i++){ if(lista[i].pdf || paginaTemConteudo(lista[i])) return true; }
+    for(var i=0;i<lista.length;i++){ if(pdfsDaPagina(lista[i]).length || paginaTemConteudo(lista[i])) return true; }
     return false;
   }
   function avisarPortal(extra){
@@ -1766,7 +1851,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     if(!decidido) return;
     if(trancado){ agendarSalvar(); return; }
     paginas[pagAtual] = estadoPaginaAtual();
-    var dados = aulaTemConteudo() ? { v:1, inicio:inicioAula, atualizado:Date.now(), pagAtual:pagAtual, paginas:paginas.slice() } : null;
+    var dados = aulaTemConteudo() ? { v:1, inicio:inicioAula, atualizado:Date.now(), pagAtual:pagAtual, blocoPdf:Math.max(0, blocoAtual()), paginas:paginas.slice() } : null;
     guardar(CHAVE_AULA, dados).then(function(){ avisouCheio = false; }, function(){
       if(!avisouCheio){ msg("Espaço do navegador cheio: salve em PDF para não perder"); avisouCheio = true; }
     });
@@ -1815,6 +1900,12 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     var idx = Math.min(Math.max(0, s.pagAtual||0), paginas.length-1);
     decidido = true;
     carregarPaginaDireto(idx, function(){
+      var m = mundoAtual();
+      if(m.L && m.L.continuo && s.blocoPdf > 0){        // volta para a página do PDF em que o professor estava
+        irParaBlocoSilencioso(Math.min(s.blocoPdf, m.L.blocos.length - 1));
+        canvas.setViewportTransform(canvas.viewportTransform);
+        desenharFundo(); attZoomUI();
+      }
       msg(silencioso ? "Aula retomada de onde parou" : "Aula retomada: " + paginas.length + " página(s)");
       avisarPortal();
     });
@@ -1925,6 +2016,172 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     }
   }, true);
 
+  /* ================= ZOOM E MOVER =================
+     100% = página inteira na tela (para PDF, uma página do PDF inteira).
+     Zoom até 500% (botões, Ctrl+roda ou pinça). Com conteúdo maior que a tela,
+     navegue com a roda do mouse, dois dedos ou a ferramenta Mover.           */
+  var ZOOM_MIN = 1, ZOOM_MAX = 5, ZOOM_PASSO = 1.25, zoomUsuario = 1;
+  var zoomTxt = document.getElementById("zoomTxt");
+  var zoomCtl = document.getElementById("zoomCtl");
+  var pdfPos  = document.getElementById("pdfPos");
+  var rafFundo = 0;
+  function fundoNoProximoQuadro(){
+    if(rafFundo) return;
+    rafFundo = requestAnimationFrame(function(){ rafFundo = 0; desenharFundo(); });
+  }
+  function limitarPan(){
+    var v = canvas.viewportTransform, s = v[0], m = mundoAtual();
+    var cw = canvas.getWidth(), ch = canvas.getHeight(), mw = m.w*s, mh = m.h*s;
+    v[4] = mw <= cw ? (cw - mw)/2 : Math.min(0, Math.max(cw - mw, v[4]));
+    v[5] = mh <= ch ? (m.L ? (ch - mh)/2 : 0) : Math.min(0, Math.max(ch - mh, v[5]));
+  }
+  function conteudoMaiorQueTela(){
+    var s = canvas.getZoom(), m = mundoAtual();
+    return m.w*s > canvas.getWidth() + 1 || m.h*s > canvas.getHeight() + 1;
+  }
+  function attZoomUI(){
+    zoomTxt.textContent = Math.round(zoomUsuario*100) + "%";
+    zoomCtl.classList.toggle("com-zoom", zoomUsuario > 1.001);
+    document.querySelector('[data-action="zoom-menos"]').disabled = zoomUsuario <= ZOOM_MIN + 0.001;
+    document.querySelector('[data-action="zoom-mais"]').disabled  = zoomUsuario >= ZOOM_MAX - 0.001;
+    var m = mundoAtual();
+    zoomCtl.classList.toggle("doc", !!(m.L && m.L.continuo));
+    attPosPdf();
+  }
+  /* página do PDF que está no centro da tela (documento contínuo) */
+  function blocoAtual(){
+    var m = mundoAtual(); if(!m.L) return -1;
+    var v = canvas.viewportTransform, yC = (canvas.getHeight()/2 - v[5]) / v[0], idx = 0;
+    m.L.blocos.forEach(function(b, k){ if(yC >= b.y - DOC_GAP/2) idx = k; });
+    return idx;
+  }
+  function attPosPdf(){
+    if(!pdfPos) return;
+    var m = mundoAtual();
+    if(!m.L || !m.L.continuo){ pdfPos.textContent = ""; return; }
+    var k = blocoAtual();
+    pdfPos.textContent = (k+1) + "/" + m.L.blocos.length;
+    document.querySelector('[data-action="pdf-ant"]').disabled  = k <= 0;
+    document.querySelector('[data-action="pdf-prox"]').disabled = k >= m.L.blocos.length - 1;
+  }
+  function irParaBloco(k){
+    var m = mundoAtual(); if(!m.L) return;
+    k = Math.max(0, Math.min(m.L.blocos.length - 1, k));
+    var v = canvas.viewportTransform, b = m.L.blocos[k];
+    var alturaTela = b.h * v[0];
+    v[5] = alturaTela + DOC_M*v[0] <= canvas.getHeight()
+         ? (canvas.getHeight() - alturaTela)/2 - b.y*v[0]
+         : -(b.y - DOC_M/2) * v[0];
+    limitarPan();
+    canvas.setViewportTransform(v);
+    fundoNoProximoQuadro();
+    msg("PDF: página " + (k+1) + " de " + m.L.blocos.length);
+  }
+  function aplicarZoom(zu, px, py){
+    zu = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, zu));
+    if(px === undefined){ px = canvas.getWidth()/2; py = canvas.getHeight()/2; }
+    canvas.zoomToPoint(new fabric.Point(px, py), escalaBase() * zu);
+    zoomUsuario = zu;
+    limitarPan();
+    canvas.setViewportTransform(canvas.viewportTransform);
+    fundoNoProximoQuadro();
+    attZoomUI();
+  }
+  function zoomAjustar(silencioso){
+    zoomUsuario = 1;
+    var s = escalaBase();
+    canvas.setViewportTransform([s,0,0,s,0,0]);
+    limitarPan();
+    var m = mundoAtual();
+    if(m.L && m.L.continuo) irParaBlocoSilencioso(0);
+    canvas.setViewportTransform(canvas.viewportTransform);
+    desenharFundo();
+    attZoomUI();
+    if(!silencioso) msg("Zoom: página inteira");
+  }
+  function irParaBlocoSilencioso(k){
+    var m = mundoAtual(), v = canvas.viewportTransform, b = m.L.blocos[k];
+    v[5] = (canvas.getHeight() - b.h*v[0])/2 - b.y*v[0];
+    limitarPan();
+  }
+  function moverPor(dx, dy){
+    if(!conteudoMaiorQueTela()) return;
+    var v = canvas.viewportTransform;
+    v[4] += dx; v[5] += dy;
+    limitarPan();
+    canvas.setViewportTransform(v);
+    fundoNoProximoQuadro();
+  }
+
+  /* ferramenta Mover: arrastar a área com zoom */
+  var arrastoPan = null;
+  canvas.on("mouse:down", function(o){
+    if(estado.ferramenta !== "mover") return;
+    var e = o.e.touches ? o.e.touches[0] : o.e;
+    arrastoPan = { x:e.clientX, y:e.clientY };
+    canvas.setCursor("grabbing");
+  });
+  canvas.on("mouse:move", function(o){
+    if(!arrastoPan) return;
+    var e = o.e.touches ? o.e.touches[0] : o.e;
+    moverPor(e.clientX - arrastoPan.x, e.clientY - arrastoPan.y);
+    arrastoPan = { x:e.clientX, y:e.clientY };
+  });
+  canvas.on("mouse:up", function(){ if(arrastoPan){ arrastoPan = null; canvas.setCursor("grab"); } });
+
+  /* roda do mouse: Ctrl = zoom no ponto do cursor; sem Ctrl (com zoom) = navegar */
+  canvas.on("mouse:wheel", function(o){
+    var e = o.e;
+    if(e.ctrlKey || e.metaKey){
+      var p = canvas.getPointer(e, true);
+      aplicarZoom(zoomUsuario * Math.pow(0.998, e.deltaY), p.x, p.y);
+    }else if(conteudoMaiorQueTela()){
+      moverPor(-(e.shiftKey ? e.deltaY : e.deltaX), e.shiftKey ? 0 : -e.deltaY);
+    }else{
+      return;
+    }
+    e.preventDefault(); e.stopPropagation();
+  });
+
+  /* pinça com dois dedos (lousa e tablet): zoom + navegar, sem riscar a lousa */
+  var pinca = null;
+  function distDedos(t){ return Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); }
+  function centroDedos(t){
+    var r = canvas.upperCanvasEl.getBoundingClientRect();
+    return { x:(t[0].clientX + t[1].clientX)/2 - r.left, y:(t[0].clientY + t[1].clientY)/2 - r.top };
+  }
+  palco.addEventListener("touchstart", function(e){
+    if(e.touches.length !== 2) return;
+    e.preventDefault(); e.stopPropagation();
+    pinca = { d:distDedos(e.touches), z:zoomUsuario, c:centroDedos(e.touches),
+              pilha:pilha.length, objs:canvas.getObjects().length };
+  }, {capture:true, passive:false});
+  palco.addEventListener("touchmove", function(e){
+    if(!pinca || e.touches.length !== 2) return;
+    e.preventDefault(); e.stopPropagation();
+    var c = centroDedos(e.touches);
+    aplicarZoom(pinca.z * distDedos(e.touches) / pinca.d, c.x, c.y);
+    moverPor(c.x - pinca.c.x, c.y - pinca.c.y);
+    pinca.c = c;
+  }, {capture:true, passive:false});
+  palco.addEventListener("touchend", function(e){
+    if(!pinca || e.touches.length) return;
+    var marca = pinca; pinca = null;
+    // descarta o risco que o primeiro dedo começou antes do segundo encostar
+    setTimeout(function(){
+      var objs = canvas.getObjects();
+      if(objs.length > marca.objs){
+        trancado = true;
+        objs.slice(marca.objs).forEach(function(o){ canvas.remove(o); });
+        trancado = false;
+        pilha.length = Math.max(1, marca.pilha); redo = [];
+        attHistBotoes(); canvas.requestRenderAll();
+      }
+    }, 30);
+  }, {capture:true});
+
+  window.addEventListener("resize", function(){ aplicarZoom(zoomUsuario); });
+
   /* ================= IMPORTAR PDF =================
      Cada página do PDF vira uma página da lousa, com o PDF como fundo travado.
      O leitor (PDF.js) só é baixado quando o professor importa algo.        */
@@ -2010,7 +2267,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     }).then(function(doc){
       importando = false;
       var n = doc.numPages;
-      if(n === 1){ renderizarPaginas(doc, 1, 1, file.name); return; }
+      if(n === 1){ renderizarPaginas(doc, 1, 1, file.name, "junto"); return; }
       pedirIntervalo(doc, n, file.name);
     }).catch(function(e){
       importando = false;
@@ -2028,10 +2285,16 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
     box.innerHTML =
       '<label>Da página <input type="number" id="impDe" min="1" max="' + n + '" value="1"></label>' +
       '<label>até <input type="number" id="impAte" min="1" max="' + n + '" value="' + ate + '"></label>' +
-      '<small>' + (n > MAX_PAG_PDF ? "Máximo de " + MAX_PAG_PDF + " páginas por vez." : "") + '</small>';
+      '<small>' + (n > MAX_PAG_PDF ? "Máximo de " + MAX_PAG_PDF + " páginas por vez." : "") + '</small>' +
+      '<div class="esc-modos" role="radiogroup" aria-label="Como colocar na lousa">' +
+        '<label class="esc-modo"><input type="radio" name="impModo" value="junto" checked>' +
+          '<b>Tudo numa página da lousa</b><span>O PDF fica inteiro, como um documento: role para passar as páginas.</span></label>' +
+        '<label class="esc-modo"><input type="radio" name="impModo" value="separado">' +
+          '<b>Uma página da lousa por página do PDF</b><span>Cada página do PDF vira uma página da lousa (botões ◀ ▶).</span></label>' +
+      '</div>';
     escolher({
       titulo: "Importar PDF",
-      texto: "“" + nome + "” tem " + n + " páginas. Cada página do PDF vira uma página da lousa, para você escrever por cima.",
+      texto: "“" + nome + "” tem " + n + " páginas. Escolha quais importar e como colocar na lousa. Você escreve por cima do PDF.",
       icone: "i-importar",
       extra: box,
       botoes: [
@@ -2041,17 +2304,18 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
             var at = parseInt(document.getElementById("impAte").value, 10) || de;
             de = Math.max(1, Math.min(n, de)); at = Math.max(de, Math.min(n, at));
             if(at - de + 1 > MAX_PAG_PDF){ at = de + MAX_PAG_PDF - 1; msg("Importando só " + MAX_PAG_PDF + " páginas (limite por vez)"); }
-            renderizarPaginas(doc, de, at, nome);
+            var modo = (document.querySelector('input[name="impModo"]:checked') || {}).value || "junto";
+            renderizarPaginas(doc, de, at, nome, modo);
         } }
       ]
     });
   }
 
-  function renderizarPaginas(doc, de, ate, nome){
+  function renderizarPaginas(doc, de, ate, nome, modo){
     importando = true;
     var imagens = [], total = ate - de + 1;
     function proxima(num){
-      if(num > ate){ importando = false; inserirPaginasPdf(imagens, nome); try{ doc.destroy(); }catch(e){} return; }
+      if(num > ate){ importando = false; inserirPaginasPdf(imagens, nome, modo); try{ doc.destroy(); }catch(e){} return; }
       msg("Importando página " + (num - de + 1) + " de " + total + "...");
       doc.getPage(num).then(function(pg){
         var v1 = pg.getViewport({ scale:1 });
@@ -2062,7 +2326,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
         var ctx = c.getContext("2d");
         ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, c.width, c.height);
         return pg.render({ canvasContext: ctx, viewport: vp }).promise.then(function(){
-          imagens.push(c.toDataURL("image/jpeg", 0.85));
+          imagens.push({ src:c.toDataURL("image/jpeg", 0.85), w:c.width, h:c.height });
           c.width = c.height = 0;
           pg.cleanup();
           proxima(num + 1);
@@ -2070,25 +2334,39 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
       }).catch(function(){
         importando = false;
         msg("Erro ao desenhar a página " + num + " do PDF");
-        if(imagens.length) inserirPaginasPdf(imagens, nome);
+        if(imagens.length) inserirPaginasPdf(imagens, nome, modo);
       });
     }
     proxima(de);
   }
 
-  function inserirPaginasPdf(imagens, nome){
+  /* "junto": o PDF inteiro numa página da lousa (a atual, se estiver vazia ou já for um PDF;
+     senão, numa página nova logo depois). "separado": uma página da lousa por página do PDF. */
+  function inserirPaginasPdf(imagens, nome, modo){
     if(!imagens.length) return;
     paginas[pagAtual] = estadoPaginaAtual();
-    var vazia = !paginas[pagAtual].pdf && !paginaTemConteudo(paginas[pagAtual]);
-    var novas = imagens.map(function(src){
-      return { json: JSON.stringify({version:"5.3.0",objects:[]}), fundo: paginas[pagAtual].fundo || "branco", pdf: src };
-    });
-    var inicio = vazia ? pagAtual : pagAtual + 1;
-    Array.prototype.splice.apply(paginas, [inicio, vazia ? 1 : 0].concat(novas));
+    var atual = paginas[pagAtual];
+    var temPdf = pdfsDaPagina(atual).length > 0;
+    var vazia = !temPdf && !paginaTemConteudo(atual);
+    var fundo = atual.fundo || "branco";
+    function nova(lista){ return { json: JSON.stringify({version:"5.3.0",objects:[]}), fundo: fundo, pdfs: lista }; }
+    var alvo;
+    if(modo === "separado"){
+      var novas = imagens.map(function(it){ return nova([it]); });
+      alvo = vazia ? pagAtual : pagAtual + 1;
+      Array.prototype.splice.apply(paginas, [alvo, vazia ? 1 : 0].concat(novas));
+    }else if(vazia){
+      atual.pdfs = imagens.slice(); alvo = pagAtual;
+    }else if(temPdf){
+      atual.pdfs = pdfsDaPagina(atual).concat(imagens); alvo = pagAtual;
+    }else{
+      paginas.splice(pagAtual + 1, 0, nova(imagens.slice())); alvo = pagAtual + 1;
+    }
     if(!decidido) decidido = true;
-    carregarPaginaDireto(inicio, function(){
+    carregarPaginaDireto(alvo, function(){
       setFerramenta("caneta");
-      msg("PDF importado: " + novas.length + " página(s). Escreva por cima!");
+      var extra = (modo !== "separado" && imagens.length > 1) ? " Role ou use ▲ ▼ para passar as páginas." : "";
+      msg("PDF importado: " + imagens.length + " página(s)." + extra);
       salvarAgora();
     });
   }
@@ -2122,6 +2400,7 @@ function(t){t.__bidiEngine__=t.prototype.__bidiEngine__=function(t){var r,n,i,a,
   pagAtual = 0;
   attPagInfo();
   if(dentroDoPortal){ try{ window.parent.postMessage({ tipo:"pde-lousa-pronta", versao:3 }, "*"); }catch(e){} }
+  attZoomUI();
   iniciarAula();
 })();
 </script>
