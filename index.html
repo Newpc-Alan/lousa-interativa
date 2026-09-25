@@ -265,18 +265,23 @@
   /* ===== Adaptação de tela =====
      Telas baixas (notebook): esconde rótulos e títulos das laterais.
      Telas estreitas: compacta a barra; se não couber, ela rola na horizontal. */
+  /* Telas mais baixas (notebook, lousa com escala do Windows em 125%/150%):
+     os NOMES das ferramentas continuam visíveis. Os botões encolhem na altura
+     para caber a coluna inteira; somem só os títulos das seções. */
   @media (max-height:860px){
-    .ferr .lbl,.secao{display:none;}
-    .ferr{min-height:44px;width:52px;}
-    #lateral,#lateral-dir{width:64px;}
-    .sep-lat{margin:4px 0;}
+    .secao,.marca-lat{display:none;}
+    #lateral,#lateral-dir{width:66px;padding:6px 4px;gap:1px;}
+    #lateral .ferr,#lateral-dir .ferr{width:58px;min-height:0;padding:2px 1px;gap:2px;
+      height:clamp(34px, calc((100vh - 112px) / 14), 52px);}
+    #lateral .ferr .ico,#lateral-dir .ferr .ico{width:20px;height:20px;}
+    #lateral .ferr .lbl,#lateral-dir .ferr .lbl{font-size:9.5px;}
+    .sep-lat{margin:3px 0;}
+    .ferr.ativa::before{top:8px;bottom:8px;}
   }
-  @media (max-height:760px){
-    .ferr{min-height:40px;}
-    .marca-lat{display:none;}
-  }
-  @media (max-height:600px){
-    .ferr{min-height:36px;}
+  /* Só em telas muito baixas (menos de 560 px) os nomes saem, para caber tudo. */
+  @media (max-height:560px){
+    #lateral .ferr .lbl,#lateral-dir .ferr .lbl{display:none;}
+    #lateral .ferr,#lateral-dir .ferr{height:clamp(28px, calc((100vh - 104px) / 14), 40px);}
   }
   @media (max-width:1460px){
     #info:not(:empty) + #logo-newpc{display:none;}
